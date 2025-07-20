@@ -1,97 +1,36 @@
-import React, { useEffect, useState } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSA Visualizer</title>
+  <link rel="stylesheet" href="s.css" />
+</head>
+<body>
+  <header>
+    <h1>DSA Visualizer Playground</h1>
+    <nav>
+      <select id="algorithm-select">
+        <option value="bubbleSort">Bubble Sort</option>
+        <option value="mergeSort">Merge Sort</option>
+        <option value="dfs">DFS (Graph)</option>
+        <option value="bfs">BFS (Graph)</option>
+      </select>
+      <button id="start-btn">Start</button>
+      <button id="reset-btn">Reset</button>
+    </nav>
+  </header>
 
-const array = [8, 4, 6, 2, 9, 1, 5];
+  <main>
+    <section id="visualizer-container">
+      <!-- Visualization elements will be added dynamically -->
+    </section>
+  </main>
 
-const BubbleSortVisualizer = () => {
-  const [bars, setBars] = useState(array);
+  <footer>
+    <p>Created by Ashutosh Bhatt | Theme: Black & White with Linear Gradient</p>
+  </footer>
 
-  useEffect(() => {
-    renderArray(array);
-  }, []);
-
-  const renderArray = (arr) => {
-    setBars([...arr]);
-  };
-
-  const startSort = async () => {
-    let arr = [...bars];
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr.length - i - 1; j++) {
-        if (arr[j] > arr[j + 1]) {
-          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-          renderArray(arr);
-          await new Promise((res) => setTimeout(res, 300));
-        }
-      }
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0f172a] to-white text-white font-sans">
-      <nav className="bg-[#0f172a] shadow-lg p-4 flex justify-between items-center sticky top-0 z-50">
-        <h1 className="text-2xl font-bold">DSA Visualiser</h1>
-        <ul className="flex space-x-4">
-          <li><a href="#home" className="hover:text-blue-300">Home</a></li>
-          <li><a href="#about" className="hover:text-blue-300">About</a></li>
-          <li><a href="#contact" className="hover:text-blue-300">Contact</a></li>
-        </ul>
-      </nav>
-
-      <section id="home" className="p-10 text-center">
-        <h2 className="text-5xl font-bold mb-6 drop-shadow-[0_1px_10px_rgba(255,255,255,0.3)]">
-          Explore Data Structures
-        </h2>
-        <p className="text-xl mb-10">
-          Visualise core DSA topics with interactive animations.
-        </p>
-        <button
-          onClick={startSort}
-          className="bg-white text-blue-900 font-bold px-6 py-2 rounded-xl shadow hover:bg-blue-200 transition"
-        >
-          Visualise Bubble Sort
-        </button>
-        <div id="sort-container" className="mt-10 flex gap-2 justify-center items-end min-h-[200px]">
-          {bars.map((val, index) => (
-            <div
-              key={index}
-              style={{ height: `${val * 20}px`, width: "30px" }}
-              className="bg-blue-500 hover:bg-blue-300 transition rounded-sm shadow-white/40 shadow-md"
-            ></div>
-          ))}
-        </div>
-      </section>
-
-      <section id="about" className="p-10 bg-[#1e3a8a]">
-        <h2 className="text-4xl font-semibold mb-4">About This Project</h2>
-        <p className="text-lg leading-relaxed">
-          This DSA Visualiser helps users understand data structures and algorithms
-          like sorting, stacks, graphs, and more using intuitive visual animations.
-          Built using React, Tailwind CSS, and plain JavaScript logic.
-        </p>
-      </section>
-
-      <section id="contact" className="p-10">
-        <h2 className="text-4xl font-semibold mb-4">Contact</h2>
-        <p>
-          Email: <a href="mailto:you@example.com" className="text-blue-200 underline">you@example.com</a>
-        </p>
-        <p>
-          LinkedIn: <a href="https://linkedin.com/in/yourprofile" className="text-blue-200 underline">linkedin.com/in/yourprofile</a>
-        </p>
-      </section>
-
-      {/* Deployment Instructions:
-      1. GitHub Pages:
-         - Push this React project to a GitHub repository.
-         - Use GitHub Actions or a deploy tool like Vite/CRA + gh-pages.
-
-      2. Vercel:
-         - Go to https://vercel.com, connect your GitHub repo.
-         - Import project and deploy with default settings.
-         - Your site will be live at yourname.vercel.app
-      */}
-    </div>
-  );
-};
-
-export default BubbleSortVisualizer;
+  <script src="js.js"></script>
+</body>
+</html>
